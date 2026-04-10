@@ -38,9 +38,19 @@ export function Contact({ isDark }: ContactProps) {
 
     if (formItems && formItems.length > 0) {
       gsap.fromTo(formItems, { y: 20, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power4.out",
-        scrollTrigger: { trigger: formRef.current, start: "top 85%" }
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 85%"
+        }
       });
+
+      // 🔥 ADD THIS LINE EXACTLY HERE
+      gsap.set(formItems, { opacity: 1 });
     }
 
     flyingIcons?.forEach((icon: any) => {
@@ -89,7 +99,7 @@ export function Contact({ isDark }: ContactProps) {
 
   return (
     <section ref={container} id="contact" className={`py-20 md:py-32 relative transition-colors duration-700 overflow-hidden ${isDark ? 'bg-black text-white' : 'bg-[#fcfaf7] text-gray-900'}`}>
-      
+
       <div className="absolute inset-0 pointer-events-none opacity-[0.1]">
         {[...Array(5)].map((_, i) => (
           <div key={i} className="flying-icon absolute text-[#d4af37]" style={{ top: `${20 * i}%`, left: `${15 * i}%` }}>
@@ -99,7 +109,7 @@ export function Contact({ isDark }: ContactProps) {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div className="text-center mb-16 md:mb-24 contact-header opacity-0">
+        <div className="text-center mb-16 md:mb-24 contact-header">
           <span className="text-[10px] tracking-[0.5em] text-[#d4af37] uppercase font-bold block mb-4">Get In Touch</span>
           <h2 className="text-5xl md:text-8xl font-serif italic mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             The Connection
@@ -108,7 +118,7 @@ export function Contact({ isDark }: ContactProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-          
+
           <div className={`p-8 md:p-12 border backdrop-blur-sm transition-all duration-500 ${isDark ? 'bg-white/[0.03] border-white/10 shadow-2xl' : 'bg-white border-gray-100 shadow-xl'}`}>
             {status !== 'idle' && status !== 'sending' ? (
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="h-[450px] flex flex-col items-center justify-center text-center">
@@ -121,76 +131,72 @@ export function Contact({ isDark }: ContactProps) {
             ) : (
               <form ref={formRef} className="space-y-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div className="form-item opacity-0 group">
+                  <div className="form-item group">
                     <label className="text-[10px] tracking-[0.2em] font-bold text-[#d4af37] block mb-2">FULL NAME</label>
-                    <input 
-                      name="name" 
-                      type="text" 
-                      required 
-                      placeholder="Tarun Kapoor" 
-                      className={`w-full bg-transparent border-b py-3 outline-none transition-all focus:border-[#d4af37] text-sm placeholder:opacity-100 ${
-                        isDark 
-                        ? 'border-white/10 text-white placeholder:text-gray-500' 
-                        : 'border-black/10 text-black placeholder:text-gray-400'
-                      }`} 
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Tarun Kapoor"
+                      className={`w-full bg-transparent border-b py-3 outline-none transition-all focus:border-[#d4af37] text-sm placeholder:opacity-100 ${isDark
+                          ? 'border-white/10 text-white placeholder:text-gray-500'
+                          : 'border-black/10 text-black placeholder:text-gray-400'
+                        }`}
                     />
                   </div>
                   <div className="form-item opacity-0">
                     <label className="text-[10px] tracking-[0.2em] font-bold text-[#d4af37] block mb-2">EMAIL ADDRESS</label>
-                    <input 
-                      name="email" 
-                      type="email" 
-                      required 
-                      placeholder="hello@gmail.com" 
-                      className={`w-full bg-transparent border-b py-3 outline-none transition-all focus:border-[#d4af37] text-sm placeholder:opacity-100 ${
-                        isDark 
-                        ? 'border-white/10 text-white placeholder:text-gray-500' 
-                        : 'border-black/10 text-black placeholder:text-gray-400'
-                      }`} 
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="hello@gmail.com"
+                      className={`w-full bg-transparent border-b py-3 outline-none transition-all focus:border-[#d4af37] text-sm placeholder:opacity-100 ${isDark
+                          ? 'border-white/10 text-white placeholder:text-gray-500'
+                          : 'border-black/10 text-black placeholder:text-gray-400'
+                        }`}
                     />
                   </div>
                 </div>
 
                 <div className="form-item opacity-0">
-                    <label className="text-[10px] tracking-[0.2em] font-bold text-[#d4af37] block mb-2">SELECT SERVICE</label>
-                    <select 
-                      name="ritual" 
-                      required 
-                      className={`w-full bg-transparent border-b py-3 outline-none cursor-pointer focus:border-[#d4af37] text-sm ${
-                        isDark ? 'border-white/10 text-white' : 'border-black/10 text-black'
+                  <label className="text-[10px] tracking-[0.2em] font-bold text-[#d4af37] block mb-2">SELECT SERVICE</label>
+                  <select
+                    name="ritual"
+                    required
+                    className={`w-full bg-transparent border-b py-3 outline-none cursor-pointer focus:border-[#d4af37] text-sm ${isDark ? 'border-white/10 text-white' : 'border-black/10 text-black'
                       }`}
-                    >
-                        <option value="" disabled selected className={isDark ? "bg-black text-gray-500" : "bg-white text-gray-400"}>Choose a Ritual</option>
-                        <option value="Bridal Makeup" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Bridal Makeup Ritual</option>
-                        <option value="Celebrity Makeover" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Celebrity Makeover</option>
-                        <option value="Academy Inquiry" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Academy / Workshop</option>
-                        <option value="Groom Package" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Groom Styling</option>
-                    </select>
+                  >
+                    <option value="" disabled selected className={isDark ? "bg-black text-gray-500" : "bg-white text-gray-400"}>Choose a Ritual</option>
+                    <option value="Bridal Makeup" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Bridal Makeup Ritual</option>
+                    <option value="Celebrity Makeover" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Celebrity Makeover</option>
+                    <option value="Academy Inquiry" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Academy / Workshop</option>
+                    <option value="Groom Package" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Groom Styling</option>
+                  </select>
                 </div>
 
                 <div className="form-item opacity-0">
                   <label className="text-[10px] tracking-[0.2em] font-bold text-[#d4af37] block mb-2">YOUR MESSAGE</label>
-                  <textarea 
-                    name="message" 
-                    placeholder="How can we help you look your best?" 
-                    rows={2} 
-                    className={`w-full bg-transparent border-b py-3 outline-none resize-none transition-all focus:border-[#d4af37] text-sm placeholder:opacity-100 ${
-                      isDark 
-                      ? 'border-white/10 text-white placeholder:text-gray-500' 
-                      : 'border-black/10 text-black placeholder:text-gray-400'
-                    }`}
+                  <textarea
+                    name="message"
+                    placeholder="How can we help you look your best?"
+                    rows={2}
+                    className={`w-full bg-transparent border-b py-3 outline-none resize-none transition-all focus:border-[#d4af37] text-sm placeholder:opacity-100 ${isDark
+                        ? 'border-white/10 text-white placeholder:text-gray-500'
+                        : 'border-black/10 text-black placeholder:text-gray-400'
+                      }`}
                   ></textarea>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
                   <button type="button" onClick={() => handleAction('whatsapp')} disabled={status === 'sending'}
                     className="flex-1 bg-[#d4af37] py-5 text-black font-bold tracking-[0.3em] text-[10px] uppercase transition-all hover:bg-[#b8962d] active:scale-95 flex items-center justify-center gap-3">
-                    {status === 'sending' ? 'Processing...' : <><Send size={14}/> WhatsApp</>}
+                    {status === 'sending' ? 'Processing...' : <><Send size={14} /> WhatsApp</>}
                   </button>
 
                   <button type="button" onClick={() => handleAction('email')} disabled={status === 'sending'}
                     className={`flex-1 border border-[#d4af37] py-5 font-bold tracking-[0.3em] text-[10px] uppercase transition-all active:scale-95 flex items-center justify-center gap-3 ${isDark ? 'text-[#d4af37] hover:bg-[#d4af37] hover:text-black' : 'text-black hover:bg-black hover:text-white'}`}>
-                    <Mail size={14}/> Email Inquiry
+                    <Mail size={14} /> Email Inquiry
                   </button>
                 </div>
               </form>
