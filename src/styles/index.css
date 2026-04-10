@@ -1,0 +1,40 @@
+/* 1. SARE IMPORTS SABSE UPAR */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Montserrat:wght@100;300;600&display=swap');
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* 2. VARIABLES AUR ROOT ELEMENTS */
+:root {
+  --gold: #d4af37;
+}
+
+/* 3. BAAKI KI STYLING */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: auto !important; 
+  background-color: #000;
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Swiper Customization */
+.swiper-pagination-bullet-active {
+  background: var(--gold) !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
