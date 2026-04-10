@@ -72,15 +72,15 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
         : 'bg-transparent py-4 border-transparent'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center">
 
           <div className="flex-1 flex items-center gap-12">
-            <motion.div variants={itemVariants} className="group cursor-pointer relative h-12 w-72">
+            <motion.div variants={itemVariants} className="group cursor-pointer relative h-12 w-40 sm:w-56 md:w-64 lg:w-72">
               <img
                 src={logo}
                 alt="Tarun Kapoor Logo"
-                className={`h-48 w-auto absolute top-1/2 left-0 -translate-y-1/2 transition-all duration-700 ${isDark ? 'brightness-110 contrast-110' : 'brightness-100'} hover:scale-110`}
+                className={`h-20 sm:h-28 md:h-36 lg:h-48 w-auto absolute ... top-1/2 left-0 -translate-y-1/2 transition-all duration-700 ${isDark ? 'brightness-110 contrast-110' : 'brightness-100'} hover:scale-110`}
               />
             </motion.div>
 
@@ -91,7 +91,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
                   variants={itemVariants}
                   href={`#${item.toLowerCase()}`}
                   onClick={(e) => scrollToSection(e, `#${item.toLowerCase()}`)}
-                  className={`relative text-[10px] tracking-[0.3em] uppercase transition-colors duration-500 group ${isDark ? 'text-gray-300 hover:text-[#d4af37]' : 'text-gray-700 hover:text-[#8a6d3b]'
+                  className={`relative text-[11px] sm:text-xs md:text-sm tracking-[0.3em] uppercase transition-colors duration-500 group ${isDark ? 'text-gray-300 hover:text-[#d4af37]' : 'text-gray-700 hover:text-[#8a6d3b]'
                     }`}
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
@@ -112,7 +112,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
               {isDark ? <Sun size={18} strokeWidth={1.5} /> : <Moon size={18} strokeWidth={1.5} />}
             </motion.button>
 
-            <motion.div variants={itemVariants} className="hidden xl:flex flex-col items-end">
+            <motion.div variants={itemVariants} className="hidden md:flex xl:flex flex-col items-end">
               <div className="flex items-center gap-2 text-[#d4af37]">
                 <Phone className="w-3 h-3" />
                 <span className={`text-[9px] tracking-widest uppercase transition-colors duration-700 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
@@ -127,7 +127,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
             <motion.button 
               variants={itemVariants} 
               onClick={(e) => scrollToSection(e, '#contact')}
-              className="relative hidden sm:block overflow-hidden border border-[#d4af37]/60 px-8 py-3 group transition-all duration-500">
+              className="relative flex sm:flex ... overflow-hidden border border-[#d4af37]/60 px-8 py-3 group transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-r from-[#8a6d3b] to-[#d4af37] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out" />
               <div className={`relative flex items-center gap-3 font-bold tracking-[0.2em] text-[10px] uppercase transition-colors duration-500 ${isDark ? 'text-[#d4af37] group-hover:text-black' : 'text-[#8a6d3b] group-hover:text-white'
                 }`}>
